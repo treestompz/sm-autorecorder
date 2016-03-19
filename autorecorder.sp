@@ -30,7 +30,7 @@ new Handle:g_hTimeStart = INVALID_HANDLE;
 new Handle:g_hTimeStop = INVALID_HANDLE;
 new Handle:g_hFinishMap = INVALID_HANDLE;
 new Handle:g_hDemoPath = INVALID_HANDLE;
-new Handle:g_hHostName = INVALID_HANDLE;
+new Handle:g_hARServerName = INVALID_HANDLE;
 
 new bool:g_bIsRecording = false;
 new bool:g_bIsManual = false;
@@ -53,11 +53,12 @@ public OnPluginStart()
     g_hTimeStart = CreateConVar("sm_autorecord_timestart", "-1", "Hour in the day to start recording (0-23, -1 disables)");
     g_hTimeStop = CreateConVar("sm_autorecord_timestop", "-1", "Hour in the day to stop recording (0-23, -1 disables)");
     g_hFinishMap = CreateConVar("sm_autorecord_finishmap", "1", "If 1, continue recording until the map ends", _, true, 0.0, true, 1.0);
-    char hn[64];
-    g_hHostName = FindConVar("hostname");
-    GetConVarString(g_hHostName, hn, 64);
+    g_hARServerName = CreateConVar("ar_servername", "server", "Used to power showdown-demobrowser");
+    char sn[64];
+    g_hARServerName = FindConVar("ar_servername");
+    GetConVarString(g_hARServerName, sn, 64);
     decl String:sDemosPath[PLATFORM_MAX_PATH];
-    Format(sDemosPath, sizeof(sDemosPath), "%s/%s", "/home/csgo/showdown-demobrowser/static/demos", hn);
+    Format(sDemosPath, sizeof(sDemosPath), "%s/%s", "/home/csgo/showdown-demobrowser/static/demos", sn);
     g_hDemoPath = CreateConVar("sm_autorecord_path", sDemosPath, "Path to store recorded demos");
 
     /* AutoExecConfig(true, "autorecorder"); hardcode this ish */
