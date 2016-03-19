@@ -49,7 +49,7 @@ public OnPluginStart()
     CreateConVar("sm_autorecord_version", PLUGIN_VERSION, "Auto Recorder plugin version", FCVAR_PLUGIN|FCVAR_SPONLY|FCVAR_REPLICATED|FCVAR_NOTIFY|FCVAR_DONTRECORD);
 
     g_hAutoRecord = CreateConVar("sm_autorecord_enable", "1", "Enable automatic recording", _, true, 0.0, true, 1.0);
-    g_hMinPlayersStart = CreateConVar("sm_autorecord_minplayers", "1", "Minimum players on server to start recording", _, true, 0.0);
+    g_hMinPlayersStart = CreateConVar("sm_autorecord_minplayers", "2", "Minimum players on server to start recording", _, true, 0.0);
     g_hTimeStart = CreateConVar("sm_autorecord_timestart", "-1", "Hour in the day to start recording (0-23, -1 disables)");
     g_hTimeStop = CreateConVar("sm_autorecord_timestop", "-1", "Hour in the day to stop recording (0-23, -1 disables)");
     g_hFinishMap = CreateConVar("sm_autorecord_finishmap", "1", "If 1, continue recording until the map ends", _, true, 0.0, true, 1.0);
